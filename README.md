@@ -1,10 +1,16 @@
+To clone, `cd` to the parent directory of your choice, then run
+
+```
+git clone https://github.com/erickeniuk/weather_app.git
+```
+
 # weather_app
 A weather app that returns various information about weather. Backend in Go. Planning to frontend with HTMX and possibly create a Flutter app with it.
 
 Run the gin server with:
 
 ```
-cd ./<parent_dir> # <-- Should see weather_app.go here
+cd ./weather_app # <-- Should see router.go here
 go run .
 ```
 
