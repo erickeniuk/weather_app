@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<script src="https://unpkg.com/htmx.org@1.9.6"></script>
+
+<html>
+  <head>
+    <title>{{ .City }}'s Hourly Weather Today!</title>
+  </head>
+  <body>
+    <h1>Weather for {{ .City }}</h1>
+    <table border="1">
+      <tr>
+        <th>Date</th>
+        <th>Temperature</th>
+      </tr>
+      {{ range .Forecasts }}
+      <tr>
+        <td>{{ .Date }}</td>
+        <td>{{ .Temperature }}</td>
+      </tr>
+      {{ end }}
+    </table>
+    <button
+      hx-delete="/weather"
+      hx-target="body"
+      hx-get="/"
+      hx-push-url="true"
+    >
+      Return to Homepage!
+    </button>
+  </body>
+</html>

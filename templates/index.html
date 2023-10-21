@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<script src="https://unpkg.com/htmx.org@1.9.6"></script>
+
+<html>
+  <head>
+    <title>Welcome to Weather Forecaster!</title>
+  </head>
+  <form action="/url" method="GET">
+    <label for="city">
+      Get weather forecast for
+      <input
+        type="text"
+        id="city"
+        name="city"
+        input pattern=".{2,0}" 
+		required title="5 to 10 characters"
+        placeholder="Chicago"
+        required
+		
+      />
+    </label>
+    <button
+      type="submit"
+      hx-get="/weather"
+      hx-params="city"
+	  hx-include="[name='city']"
+      hx-target="body"
+      hx-get="/"
+      hx-push-url="true"
+    >
+      Get Weather
+    </button>
+  </form>
+</html>

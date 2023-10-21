@@ -14,3 +14,4 @@ To test, open a separate window and run `curl` command:
 # Get weather in Seattle
 curl "localhost:8080/weather?city=Seattle
 ```
+
