@@ -15,3 +15,5 @@ To test, open a separate window and run `curl` command:
 curl "localhost:8080/weather?city=Seattle
 ```
 
+# HTMX Frontend
+This weather app's frontend is designed using HTMX. HTMX is an open-source project from [bigskysoftware/hmtx @ GitHub](https://github.com/bigskysoftware/htmx) .
