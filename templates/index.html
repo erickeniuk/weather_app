@@ -2,8 +2,54 @@
 <script src="https://unpkg.com/htmx.org@1.9.6"></script>
 
 <style>
-	.smooth {
-		transition: all 1s ease-in;
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+	}
+
+	@keyframes fade-out {
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes slide-from-right {
+		from {
+			transform: translateX(90px);
+		}
+	}
+
+	@keyframes slide-to-left {
+		to {
+			transform: translateX(-90px);
+		}
+	}
+
+	.slide-it {
+		view-transition-name: slide-it;
+	}
+
+	::view-transition-old(slide-it) {
+		animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+			600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+	}
+
+	::view-transition-new(slide-it) {
+		animation: 420ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+			600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+	}
+
+	.error-message {
+		color: red;
+	}
+
+	.error input {
+		box-shadow: 0 0 3px #CC0000;
+	}
+
+	.valid input {
+		box-shadow: 0 0 3px #36cc00;
 	}
 </style>
 
@@ -12,25 +58,27 @@
 <head>
 	<title>Welcome to Weather Forecaster!</title>
 </head>
-<form action="/url" method="GET">
-	<label for="city">
-		Get weather forecast for
-		<input type="text" id="city" name="city" input pattern=".{2,0}" required title="5 to 10 characters"
-			placeholder="Chicago" required />
-	</label>
-	<button type="submit" hx-get="/weather" hx-params="city" hx-include="[name='city']" hx-target="body"
-		hx-push-url="true">
-		Get Weather
-	</button>
-	<br>
-	<button id="color-demo" class="smooth" style="color:rgb(173,8,54)" 
-	type="submit" hx-get="/weather" 
-	hx-params="city" hx-include="[name='city']" 
-	hx-swap="outerHTML" 
-		hx-push-url="true"
-		hx-trigger="every 1s">
-		Get Weather without swapping pages
-	</button>
-</form>
+<div class="slide-it">
+	<form action="/url" method="GET">
+		<label for="city">
+			Get weather forecast for
+			<input type="text" id="city" name="city" input pattern=".{2,0}" required title="5 to 10 characters"
+				placeholder="Chicago" required />
 
+		</label>
+		<button type="submit" hx-swap="innerHTML transition:true" hx-get="/weather" hx-params="city"
+			hx-include="[name='city']" hx-target="body" hx-push-url="true">
+			Get Weather
+		</button>
+	</form>
+</div>
+
+<!--
+<div hx-target="this" hx-swap="outerHTML" class="error">
+	<label>Email Address</label>
+	<input name="email" hx-post="/contact/email" hx-indicator="#ind" value="test@foo.com">
+	<img id="ind" src="/img/bars.svg" class="htmx-indicator" />
+	<div class='error-message'>That email is already taken! Please enter another email.</div>
+</div>
+-->
 </html>
