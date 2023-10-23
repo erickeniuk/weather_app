@@ -12,6 +12,10 @@ func main() {
 	// run app
 	r := gin.Default()
 	r.LoadHTMLGlob("./templates/*.html")
+	r.StaticFile("/weather_icon.png", "./assets/weather_icon.png")
+	r.StaticFile("/weather.ico", "./assets/weather.ico")
+	r.Static("/bootstrap", "./templates/bootstrap")
+	r.Static("/css", "./templates/css")
 
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{"content": "This is an index page..."})

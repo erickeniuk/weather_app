@@ -7,7 +7,7 @@ git clone https://github.com/erickeniuk/weather_app.git
 # weather_app
 A weather app that returns various information about weather. Backend in Go. Simple frontend with HTMX and possibly create a Flutter app with it.
 
-## Start the server
+### Start the server
 
 Run the gin server with:
 
@@ -27,7 +27,7 @@ You should see some HTML return which if copy-pasted into an .html file would di
 
 Alternatively, run the server and see below:
 
-## HTMX Frontend
+### HTMX Frontend
 This weather app's frontend is designed using HTMX. HTMX is an open-source project from [bigskysoftware/hmtx @ GitHub](https://github.com/bigskysoftware/htmx) .
 
 HTMX offers some nice, fast front-end features without writing a bunch of JS. Nice.
