@@ -34,6 +34,6 @@ HTMX offers some nice, fast front-end features without writing a bunch of JS. Ni
 
 Run your server using `go run .` and confirm it's successfully running. Then, go to your browser and enter `localhost:8080`, or whichever port you chose to run on, and you should see:
 
-![Basic Front End](./assets/basic_frontend_v1.png)
+![Basic Front End](./assets/prettier_frontend.png)
 
 From there, you can enter the city of your choose and a nice css smooth transition should swap out the search bar with your results.
